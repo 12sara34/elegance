@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELEGANCE | Premium Fashion & Lifestyle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #f5f3ef;
+            --accent: #9d6b53;
+            --accent-dark: #7a5341;
+            --gold: #c9a86a;
+            --light-gray: #e8e5de;
+            --dark-gray: #5a5a5a;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            --shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            --border-radius: 0;
+            --section-spacing: 120px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--secondary);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: default;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+        
+        /* Hide scrollbar but keep functionality */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Smooth scrolling container */
+        .smooth-scroll {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background-color: rgba(245, 243, 239, 0.95);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--primary);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 45px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+        
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        
+        nav a:hover::before {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .header-icon {
+            font-size: 18px;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .header-icon:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent);
+            color: white;
+            font-size: 11px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            margin-top: 90px;
+            overflow: hidden;
+        }
+        
+        .hero-slider {
+            display: flex;
+            width: 400%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 60px;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transform: scale(1.05);
+            transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .hero-slide.active .hero-image {
+            transform: scale(1);
+        }
+        
+        .hero-image-1 {
+            background-image: url('https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+        
+        .hero-image-2 {
+            background-image: url('https://images.unsplash.com/photo-1558769132-cb1ceed989bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');
+        }
+        
+        .hero-image-3 {
+            background-image: url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80');
+        }
+        
+        .hero-image-4 {
+            background-image: url('https://images.unsplash.com/photo-1525507119021-ed9c5d35b68e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.4) 50%, rgba(10,10,10,0) 100%);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: var(--secondary);
+            max-width: 650px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s 0.3s, transform 1.2s 0.3s;
+        }
+        
+        .hero-slide.active .hero-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-subtitle {
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            opacity: 0.8;
+            color: var(--gold);
+        }
+        
+        .hero-title {
+            font-size: 76px;
+            line-height: 1;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        
+        .hero-text {
+            font-size: 18px;
+            margin-bottom: 45px;
+            opacity: 0.9;
+            max-width: 500px;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(157, 107, 83, 0.3);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .hero-nav {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hero-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .hero-dot::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .hero-dot.active {
+            background-color: white;
+            transform: scale(1.3);
+        }
+        
+        .hero-dot.active::after {
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        /* Horizontal Scroll Sections */
+        .horizontal-section {
+            padding: var(--section-spacing) 0;
+            position: relative;
+            overflow: visible !important; /* Changed from hidden */
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 70px;
+            padding: 0 60px;
+        }
+        
+        .section-title {
+            font-size: 48px;
+            font-weight: 400;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .section-subtitle {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+        
+        .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 10px 0;
+        }
+        
+        .view-all:hover {
+            color: var(--accent);
+            gap: 15px;
+        }
+        
+        /* Smooth horizontal scrolling container */
+        .horizontal-scroll-container {
+            position: relative;
+            width: 100%;
+            padding: 0 60px;
+        }
+        
+        .horizontal-scroll {
+            display: flex;
+            gap: 40px;
+            padding: 20px 0 60px;
+            width: max-content;
+            will-change: transform;
+        }
+        
+        /* Scroll navigation arrows */
+        .scroll-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .scroll-nav:hover {
+            background-color: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .scroll-nav.left {
+            left: 20px;
+        }
+        
+        .scroll-nav.right {
+            right: 20px;
+        }
+        
+        .scroll-nav i {
+            font-size: 20px;
+            color: var(--primary);
+        }
+        
+        /* Product Cards */
+        .product-card {
+            width: 420px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            flex-shrink: 0;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.08);
+        }
+        
+        .product-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 35px;
+            background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 60%, rgba(10,10,10,0) 100%);
+            color: white;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .product-category {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .product-name {
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        
+        .quick-add {
+            background-color: white;
+            color: var(--primary);
+            border: none;
+            padding: 14px 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quick-add::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(157, 107, 83, 0.1), transparent);
+            transition: left 0.7s;
+        }
+        
+        .quick-add:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .quick-add:hover::before {
+            left: 100%;
+        }
+        
+        /* New Arrivals */
+        .arrival-card {
+            width: 350px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            background-color: var(--light-gray);
+        }
+        
+        .arrival-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        
+        /* Collections */
+        .collection-card {
+            width: 700px;
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .collection-content {
+            position: absolute;
+            top: 50%;
+            left: 60px;
+            transform: translateY(-50%);
+            color: white;
+            z-index: 2;
+            max-width: 400px;
+        }
+        
+        .collection-title {
+            font-size: 56px;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+        
+        /* Editorial */
+        .editorial-section {
+            padding: var(--section-spacing) 0;
+            background-color: var(--primary);
+            color: var(--secondary);
+        }
+        
+        .editorial-section .section-title,
+        .editorial-section .view-all,
+        .editorial-section .section-subtitle {
+            color: var(--secondary);
+        }
+        
+        .editorial-section .section-title::after {
+            background-color: var(--gold);
+        }
+        
+        .editorial-card {
+            width: 550px;
+            height: 650px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .editorial-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 45px;
+            color: white;
+            z-index: 2;
+        }
+        
+        .editorial-tag {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            color: var(--gold);
+        }
+        
+        .editorial-title {
+            font-size: 36px;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+        
+        /* Accessories Section */
+        .accessories-section {
+            background-color: var(--light-gray);
+        }
+        
+        /* Brands */
+        .brands-section {
+            padding: 80px 0;
+            background-color: var(--primary);
+            color: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brands-container {
+            width: max-content;
+            display: flex;
+            gap: 80px;
+            padding: 40px 0;
+            animation: scrollBrands 40s linear infinite;
+        }
+        
+        @keyframes scrollBrands {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .brand-item {
+            min-width: 220px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        
+        .brand-item:hover {
+            opacity: 1;
+        }
+        
+        .brand-text {
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .newsletter-title {
+            font-size: 52px;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        
+        .newsletter-text {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            color: var(--dark-gray);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 550px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 22px 28px;
+            border: 1px solid rgba(0,0,0,0.1);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            outline: none;
+            transition: var(--transition);
+            background-color: white;
+        }
+        
+        .newsletter-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(157, 107, 83, 0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--secondary);
+            padding: 100px 0 50px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 70px;
+            margin-bottom: 80px;
+        }
+        
+        .footer-column h3 {
+            font-size: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 18px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 15px;
+            position: relative;
+            padding-left: 0;
+        }
+        
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 20px;
+        }
+        
+        .footer-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 25px;
+            margin-top: 35px;
+        }
+        
+        .social-icon {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 20px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-icon:hover {
+            color: white;
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 20px;
+            font-size: 26px;
+        }
+        
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .section-header {
+                padding: 0 40px;
+            }
+            
+            .horizontal-scroll-container {
+                padding: 0 40px;
+            }
+            
+            .hero-slide {
+                padding-left: 40px;
+            }
+            
+            .hero-title {
+                font-size: 64px;
+            }
+            
+            .product-card {
+                width: 380px;
+                height: 550px;
+            }
+            
+            .collection-card {
+                width: 600px;
+                height: 500px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .scroll-nav {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 56px;
+            }
+            
+            .section-title {
+                font-size: 42px;
+            }
+            
+            .product-card {
+                width: 350px;
+                height: 500px;
+            }
+            
+            .collection-card {
+                width: 550px;
+                height: 450px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            nav {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-text {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .product-card {
+                width: 320px;
+                height: 460px;
+            }
+            
+            .collection-card {
+                width: 480px;
+                height: 400px;
+            }
+            
+            .collection-title {
+                font-size: 42px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .section-header {
+                padding: 0 30px;
+            }
+            
+            .horizontal-scroll-container {
+                padding: 0 30px;
+            }
+            
+            .hero {
+                margin-top: 80px;
+            }
+            
+            .hero-slide {
+                padding-left: 30px;
+            }
+            
+            .hero-title {
+                font-size: 40px;
+            }
+            
+            .btn {
+                padding: 16px 35px;
+            }
+            
+            .horizontal-section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .product-card {
+                width: 280px;
+                height: 420px;
+            }
+            
+            .collection-card {
+                width: 400px;
+                height: 350px;
+            }
+            
+            .collection-title {
+                font-size: 36px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .section-header {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .horizontal-scroll-container {
+                padding: 0 20px;
+            }
+            
+            .hero-slide {
+                padding-left: 20px;
+            }
+            
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-text {
+                font-size: 15px;
+            }
+            
+            .product-card {
+                width: 260px;
+                height: 380px;
+            }
+            
+            .collection-card {
+                width: 350px;
+                height: 300px;
+            }
+            
+            .collection-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">ELEGANCE</a>
+            <nav>
+                <ul>
+                    <li><a href="#new-arrivals">New Arrivals</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#clothing">Clothing</a></li>
+                    <li><a href="#accessories">Accessories</a></li>
+                    <li><a href="#editorial">Editorial</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="header-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="header-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="header-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="cart-count">3</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider" id="heroSlider">
+            <div class="hero-slide active">
+                <div class="hero-image hero-image-1"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-subtitle">Autumn Collection 2024</div>
+                    <h1 class="hero-title">Timeless Elegance</h1>
+                    <p class="hero-text">Discover our latest collection featuring premium materials and craftsmanship that defines modern luxury.</p>
+                    <a href="#collections" class="btn">Explore Now</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-image hero-image-2"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-subtitle">Limited Edition</div>
+                    <h1 class="hero-title">Artisanal Craftsmanship</h1>
+                    <p class="hero-text">Handcrafted pieces made by master artisans using traditional techniques and premium materials.</p>
+                    <a href="#new-arrivals" class="btn">Shop Exclusive</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-image hero-image-3"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-subtitle">Sustainable Luxury</div>
+                    <h1 class="hero-title">Conscious Design</h1>
+                    <p class="hero-text">Eco-friendly materials and ethical production methods without compromising on quality or style.</p>
+                    <a href="#collections" class="btn">Discover More</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <div class="hero-image hero-image-4"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-subtitle">Winter Essentials</div>
+                    <h1 class="hero-title">Layered Sophistication</h1>
+                    <p class="hero-text">Premium outerwear and cozy essentials designed for the colder months ahead.</p>
+                    <a href="#clothing" class="btn">Shop Winter</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-nav">
+            <div class="hero-dot active" data-slide="0"></div>
+            <div class="hero-dot" data-slide="1"></div>
+            <div class="hero-dot" data-slide="2"></div>
+            <div class="hero-dot" data-slide="3"></div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="horizontal-section" id="new-arrivals">
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle">Just Arrived</div>
+                <h2 class="section-title">New Arrivals</h2>
+            </div>
+            <a href="#" class="view-all">
+                View All
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="horizontal-scroll-container">
+            <div class="scroll-nav left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="horizontal-scroll no-scrollbar smooth-scroll" id="newArrivalsScroll">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80')"></div>
+                    <div class="arrival-badge">New</div>
+                    <div class="product-overlay">
+                        <div class="product-category">Handbags</div>
+                        <h3 class="product-name">Saffiano Leather Tote</h3>
+                        <div class="product-price">$1,850</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Footwear</div>
+                        <h3 class="product-name">Leather Chelsea Boots</h3>
+                        <div class="product-price">$795</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="arrival-badge">Limited</div>
+                    <div class="product-overlay">
+                        <div class="product-category">Shoes</div>
+                        <h3 class="product-name">Leather Platform Loafers</h3>
+                        <div class="product-price">$695</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1936&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Jewelry</div>
+                        <h3 class="product-name">Diamond Tennis Bracelet</h3>
+                        <div class="product-price">$12,500</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="arrival-badge">New</div>
+                    <div class="product-overlay">
+                        <div class="product-category">Watches</div>
+                        <h3 class="product-name">Automatic Chronograph</h3>
+                        <div class="product-price">$8,200</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1544441893-675973e31985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Outerwear</div>
+                        <h3 class="product-name">Cashmere Blend Coat</h3>
+                        <div class="product-price">$1,250</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-nav right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section class="horizontal-section" id="collections">
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle">Seasonal Edit</div>
+                <h2 class="section-title">Featured Collections</h2>
+            </div>
+            <a href="#" class="view-all">
+                View All
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="horizontal-scroll-container">
+            <div class="scroll-nav left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="horizontal-scroll no-scrollbar smooth-scroll" id="collectionsScroll">
+                <div class="collection-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="collection-content">
+                        <h3 class="collection-title">Autumn Winter 2024</h3>
+                        <p class="hero-text">Rich textures and warm tones for the season ahead. Featuring premium wools, cashmeres, and leathers.</p>
+                        <a href="#" class="btn">Shop Collection</a>
+                    </div>
+                </div>
+                <div class="collection-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1558769132-cb1ceed989bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="collection-content">
+                        <h3 class="collection-title">Evening Wear</h3>
+                        <p class="hero-text">Elegant formal wear and accessories for special occasions and black-tie events.</p>
+                        <a href="#" class="btn">Shop Collection</a>
+                    </div>
+                </div>
+                <div class="collection-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="collection-content">
+                        <h3 class="collection-title">Travel Collection</h3>
+                        <p class="hero-text">Functional luxury pieces designed for the modern traveler. Durable, stylish, and versatile.</p>
+                        <a href="#" class="btn">Shop Collection</a>
+                    </div>
+                </div>
+                <div class="collection-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="collection-content">
+                        <h3 class="collection-title">Weekend Essentials</h3>
+                        <p class="hero-text">Casual yet sophisticated pieces for relaxed weekends and leisure time.</p>
+                        <a href="#" class="btn">Shop Collection</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-nav right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clothing -->
+    <section class="horizontal-section" id="clothing">
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle">Ready to Wear</div>
+                <h2 class="section-title">Clothing</h2>
+            </div>
+            <a href="#" class="view-all">
+                View All
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="horizontal-scroll-container">
+            <div class="scroll-nav left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="horizontal-scroll no-scrollbar smooth-scroll" id="clothingScroll">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="arrival-badge">Best Seller</div>
+                    <div class="product-overlay">
+                        <div class="product-category">Dresses</div>
+                        <h3 class="product-name">Silk Slip Dress</h3>
+                        <div class="product-price">$890</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Suits</div>
+                        <h3 class="product-name">Tailored Wool Suit</h3>
+                        <div class="product-price">$2,450</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Knitwear</div>
+                        <h3 class="product-name">Cashmere Sweater</h3>
+                        <div class="product-price">$650</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2055&q=80')"></div>
+                    <div class="arrival-badge">New</div>
+                    <div class="product-overlay">
+                        <div class="product-category">Outerwear</div>
+                        <h3 class="product-name">Leather Biker Jacket</h3>
+                        <div class="product-price">$1,850</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Shirts</div>
+                        <h3 class="product-name">Italian Cotton Shirt</h3>
+                        <div class="product-price">$350</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-nav right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessories -->
+    <section class="horizontal-section accessories-section" id="accessories">
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle">Finishing Touches</div>
+                <h2 class="section-title">Accessories</h2>
+            </div>
+            <a href="#" class="view-all">
+                View All
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="horizontal-scroll-container">
+            <div class="scroll-nav left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="horizontal-scroll no-scrollbar smooth-scroll" id="accessoriesScroll">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Bags</div>
+                        <h3 class="product-name">Crossbody Leather Bag</h3>
+                        <div class="product-price">$1,250</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80')"></div>
+                    <div class="arrival-badge">New</div>
+                    <div class="product-overlay">
+                        <div class="product-category">Sunglasses</div>
+                        <h3 class="product-name">Aviator Sunglasses</h3>
+                        <div class="product-price">$450</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Belts</div>
+                        <h3 class="product-name">Crocodile Leather Belt</h3>
+                        <div class="product-price">$850</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')"></div>
+                    <div class="product-overlay">
+                        <div class="product-category">Wallets</div>
+                        <h3 class="product-name">Leather Cardholder</h3>
+                        <div class="product-price">$280</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="arrival-badge">Limited</div>
+                    <div class="product-overlay">
+                        <div class="product-category">Scarves</div>
+                        <h3 class="product-name">Cashmere Silk Scarf</h3>
+                        <div class="product-price">$420</div>
+                        <button class="quick-add">
+                            <i class="fas fa-plus"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-nav right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial -->
+    <section class="editorial-section" id="editorial">
+        <div class="section-header">
+            <div>
+                <div class="section-subtitle">From the Journal</div>
+                <h2 class="section-title">Editorial</h2>
+            </div>
+            <a href="#" class="view-all">
+                View All Stories
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="horizontal-scroll-container">
+            <div class="scroll-nav left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="horizontal-scroll no-scrollbar smooth-scroll" id="editorialScroll">
+                <div class="editorial-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="editorial-content">
+                        <div class="editorial-tag">Fashion Week</div>
+                        <h3 class="editorial-title">Backstage at Milan Fashion Week</h3>
+                        <p class="hero-text">An exclusive look behind the scenes of the most anticipated show of the season.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="editorial-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1519457431-44ccd64a579b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80')"></div>
+                    <div class="editorial-content">
+                        <div class="editorial-tag">Sustainability</div>
+                        <h3 class="editorial-title">The Future of Sustainable Luxury</h3>
+                        <p class="hero-text">How leading fashion houses are embracing eco-friendly practices without compromising on quality.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="editorial-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="editorial-content">
+                        <div class="editorial-tag">Designer Spotlight</div>
+                        <h3 class="editorial-title">The Vision of Isabella Rossi</h3>
+                        <p class="hero-text">An intimate conversation with the designer reshaping modern womenswear.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="editorial-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                    <div class="editorial-content">
+                        <div class="editorial-tag">Travel</div>
+                        <h3 class="editorial-title">Style Guide: French Riviera</h3>
+                        <p class="hero-text">What to pack for a week of sun, sea, and sophistication on the Côte d'Azur.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-nav right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands -->
+    <section class="brands-section">
+        <div class="brands-container">
+            <div class="brand-item">
+                <div class="brand-text">GUCCI</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">PRADA</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">BALENCIAGA</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">SAINT LAURENT</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">FENDI</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">BURBERRY</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">DIOR</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">HERMÈS</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">GUCCI</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">PRADA</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">BALENCIAGA</div>
+            </div>
+            <div class="brand-item">
+                <div class="brand-text">SAINT LAURENT</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="newsletter-title">Join Our World</h2>
+            <p class="newsletter-text">Subscribe to receive updates on new collections, exclusive offers, and editorial content.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="#" class="logo" style="color: white; margin-bottom: 30px;">ELEGANCE</a>
+                    <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 30px; font-size: 15px;">Luxury fashion and accessories for the discerning individual. Crafted with excellence, designed for eternity.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#new-arrivals">New Arrivals</a></li>
+                        <li><a href="#clothing">Clothing</a></li>
+                        <li><a href="#accessories">Accessories</a></li>
+                        <li><a href="#">Footwear</a></li>
+                        <li><a href="#">Bags</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Store Locations</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">New York</a></li>
+                        <li><a href="#">London</a></li>
+                        <li><a href="#">Paris</a></li>
+                        <li><a href="#">Milan</a></li>
+                        <li><a href="#">Tokyo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2024 ELEGANCE. All rights reserved.</div>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+            
+            // Header effect
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Hero Slider with smooth transitions
+        let currentSlide = 0;
+        let autoSlideInterval;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index, direction = 'next') {
+            // Remove active class from all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                slide.style.transform = 'translateX(0)';
+            });
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Update current slide
+            currentSlide = index;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            
+            // Add active class to current slide
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            // Reset auto slide timer
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 6000);
+        }
+
+        // Dot click events
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Start auto slide
+        autoSlideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 6000);
+
+        // Fixed: Smooth horizontal scrolling with better handling
+        const scrollContainers = [
+            { id: 'newArrivalsScroll', leftBtn: null, rightBtn: null },
+            { id: 'collectionsScroll', leftBtn: null, rightBtn: null },
+            { id: 'clothingScroll', leftBtn: null, rightBtn: null },
+            { id: 'accessoriesScroll', leftBtn: null, rightBtn: null },
+            { id: 'editorialScroll', leftBtn: null, rightBtn: null }
+        ];
+
+        // Initialize all scroll containers
+        scrollContainers.forEach((container, containerIndex) => {
+            const scrollElement = document.getElementById(container.id);
+            const leftBtn = document.querySelectorAll('.scroll-nav.left')[containerIndex];
+            const rightBtn = document.querySelectorAll('.scroll-nav.right')[containerIndex];
+            
+            // FIXED: Disable mouse drag that interferes with vertical scrolling
+            let isMouseDown = false;
+            let startX, scrollLeft;
+            
+            // Only allow drag when actively clicking and dragging horizontally
+            scrollElement.addEventListener('mousedown', (e) => {
+                // Only activate drag for horizontal movement intent
+                isMouseDown = true;
+                scrollElement.style.cursor = 'grabbing';
+                startX = e.pageX - scrollElement.offsetLeft;
+                scrollLeft = scrollElement.scrollLeft;
+                e.preventDefault(); // Prevent text selection
+            });
+            
+            scrollElement.addEventListener('mouseleave', () => {
+                isMouseDown = false;
+                scrollElement.style.cursor = 'default';
+            });
+            
+            scrollElement.addEventListener('mouseup', () => {
+                isMouseDown = false;
+                scrollElement.style.cursor = 'default';
+            });
+            
+            // FIXED: Only scroll horizontally when mouse moves significantly sideways
+            scrollElement.addEventListener('mousemove', (e) => {
+                if (!isMouseDown) return;
+                e.preventDefault();
+                const x = e.pageX - scrollElement.offsetLeft;
+                const walk = (x - startX) * 2; // Scroll speed
+                
+                // Only scroll if there's significant horizontal movement
+                if (Math.abs(walk) > 5) {
+                    scrollElement.scrollLeft = scrollLeft - walk;
+                }
+            });
+            
+            // Smooth scroll with arrow buttons
+            if (leftBtn && rightBtn) {
+                leftBtn.addEventListener('click', () => {
+                    smoothScroll(scrollElement, -400);
+                });
+                
+                rightBtn.addEventListener('click', () => {
+                    smoothScroll(scrollElement, 400);
+                });
+            }
+            
+            // FIXED: Better mouse wheel handling - prioritize vertical scrolling
+            scrollElement.addEventListener('wheel', (e) => {
+                // Only trigger horizontal scrolling when holding Shift or when element is mostly scrolled horizontally
+                if (e.shiftKey || Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                    e.preventDefault();
+                    scrollElement.scrollLeft += e.deltaY * 0.5;
+                }
+                // Otherwise, let the vertical scroll happen naturally
+            });
+        });
+
+        // Smooth scroll function with easing
+        function smoothScroll(element, amount) {
+            const start = element.scrollLeft;
+            const end = start + amount;
+            const duration = 600;
+            const startTime = performance.now();
+            
+            function scrollStep(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = easeOutCubic(progress);
+                
+                element.scrollLeft = start + (end - start) * easeProgress;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(scrollStep);
+                }
+            }
+            
+            requestAnimationFrame(scrollStep);
+        }
+
+        // Easing function for smooth scrolling
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+
+        // Product hover animation with delay
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            let hoverTimer;
+            
+            card.addEventListener('mouseenter', function() {
+                clearTimeout(hoverTimer);
+                hoverTimer = setTimeout(() => {
+                    this.style.transform = 'translateY(-15px)';
+                    this.style.boxShadow = '0 40px 80px rgba(0, 0, 0, 0.15)';
+                }, 100);
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                clearTimeout(hoverTimer);
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Quick add to cart with animation
+        const quickAddButtons = document.querySelectorAll('.quick-add');
+        const cartCount = document.querySelector('.cart-count');
+        
+        quickAddButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Animation
+                this.innerHTML = '<i class="fas fa-check"></i> Added';
+                this.style.backgroundColor = '#27ae60';
+                this.style.transform = 'scale(0.95)';
+                
+                // Update cart count with animation
+                let count = parseInt(cartCount.textContent);
+                count++;
+                cartCount.textContent = count;
+                cartCount.style.transform = 'scale(1.3)';
+                
+                setTimeout(() => {
+                    cartCount.style.transform = 'scale(1)';
+                }, 300);
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-plus"></i> Add to Cart';
+                    this.style.backgroundColor = '';
+                    this.style.transform = '';
+                }, 2000);
+            });
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const input = this.querySelector('.newsletter-input');
+            const button = this.querySelector('.btn');
+            
+            if (input.value) {
+                // Show success animation
+                const originalButtonText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Subscribed';
+                button.style.backgroundColor = '#27ae60';
+                input.value = 'Thank you for subscribing!';
+                input.style.color = '#27ae60';
+                input.style.fontWeight = '500';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalButtonText;
+                    button.style.backgroundColor = '';
+                    input.value = '';
+                    input.style.color = '';
+                    input.style.fontWeight = '';
+                }, 3000);
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize page with animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in animation to sections
+            const sections = document.querySelectorAll('.horizontal-section, .newsletter');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(40px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Trigger animations on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => observer.observe(section));
+        });
+        
+        // FIXED: Add global wheel event to prevent horizontal scroll interference
+        document.addEventListener('wheel', function(e) {
+            // Find if we're hovering over a horizontal scroll container
+            const hoveredElement = document.elementFromPoint(e.clientX, e.clientY);
+            const isOverHorizontalScroll = hoveredElement.closest('.horizontal-scroll');
+            
+            // If not over horizontal scroll area, do nothing (let vertical scroll happen)
+            if (!isOverHorizontalScroll) return;
+            
+            // If we're over horizontal scroll area and trying to scroll vertically
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                // Allow vertical scrolling to work normally
+                return;
+            }
+        }, { passive: true });
+    </script>
+</body>
+</html>
